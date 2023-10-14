@@ -1,8 +1,16 @@
 import { BellIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { useCallback, useState } from "react";
 import MyTasks from "../components/tasks/MyTasks";
 import TaskCard from "../components/tasks/TaskCard";
+import AddTaskModal from "../components/tasks/AddTaskModal";
 
 const Tasks = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const togglerOpen = useCallback(() => {
+    setIsOpen((value) => !value);
+  }, []);
+
   return (
     <div className="grid h-screen grid-cols-12">
       <div className="col-span-9 px-10 pt-10">
@@ -17,7 +25,10 @@ const Tasks = () => {
             <button className="grid h-10 w-10 place-content-center rounded-xl border-2 border-secondary/20 text-secondary transition-all hover:border-primary hover:bg-primary hover:text-white">
               <BellIcon className="h-6 w-6" />
             </button>
-            <button className="btn btn-primary">Add Task</button>
+            <button onClick={togglerOpen} className="btn btn-primary">
+              Add Task
+            </button>
+            <AddTaskModal isOpen={isOpen} togglerOpen={togglerOpen} />
             <div className="h-10 w-10 overflow-hidden rounded-xl">
               <img
                 src="https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=644&q=80"
