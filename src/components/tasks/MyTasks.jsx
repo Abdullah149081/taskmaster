@@ -3,7 +3,6 @@ import {
   DocumentMagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 
-// TODO
 const MyTasks = () => {
   const item = {
     id: 1,

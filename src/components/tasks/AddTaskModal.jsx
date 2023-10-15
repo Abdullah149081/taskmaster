@@ -1,8 +1,11 @@
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { addTask } from "../../redux/features/tasks/taskSlice";
 import Modal from "../ui/Modal";
 
 const AddTaskModal = ({ isOpen, togglerOpen }) => {
   const { register, handleSubmit, reset } = useForm();
+  const dispatch = useDispatch();
 
   const onCancel = () => {
     reset();
@@ -10,7 +13,7 @@ const AddTaskModal = ({ isOpen, togglerOpen }) => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
+    dispatch(addTask(data));
     reset();
   };
 
@@ -50,7 +53,7 @@ const AddTaskModal = ({ isOpen, togglerOpen }) => {
             {...register("date")}
           />
         </div>
-        <div className="mb-5 flex flex-col">
+        <div className="mb-5 flex flex-col text">
           <label htmlFor="title" className="mb-2">
             Assign to
           </label>
@@ -98,7 +101,7 @@ const AddTaskModal = ({ isOpen, togglerOpen }) => {
           >
             Cancel
           </button>
-          <button type="submit" className="btn btn-primary ">
+          <button type="submit" className="btn btn-primary">
             submit
           </button>
         </div>

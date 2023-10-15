@@ -1,11 +1,14 @@
 import { BellIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useCallback, useState } from "react";
+import { useSelector } from "react-redux";
+import AddTaskModal from "../components/tasks/AddTaskModal";
 import MyTasks from "../components/tasks/MyTasks";
 import TaskCard from "../components/tasks/TaskCard";
-import AddTaskModal from "../components/tasks/AddTaskModal";
 
 const Tasks = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { task } = useSelector((state) => state?.taskSlice);
+  console.log(task);
 
   const togglerOpen = useCallback(() => {
     setIsOpen((value) => !value);
@@ -47,7 +50,9 @@ const Tasks = () => {
               </p>
             </div>
             <div className="space-y-3">
-              <TaskCard />
+              {task.map((item) => (
+                <TaskCard key={item.id} task={item} />
+              ))}
             </div>
           </div>
           <div className="relative h-[800px] overflow-auto">
@@ -58,8 +63,9 @@ const Tasks = () => {
               </p>
             </div>
             <div className="space-y-3">
-              <TaskCard />
-              <TaskCard />
+              {task.map((item) => (
+                <TaskCard key={item.id} task={item} />
+              ))}
             </div>
           </div>
           <div className="relative h-[800px] overflow-auto">
@@ -70,7 +76,9 @@ const Tasks = () => {
               </p>
             </div>
             <div className="space-y-3">
-              <TaskCard />
+              {task.map((item) => (
+                <TaskCard key={item.id} task={item} />
+              ))}
             </div>
           </div>
         </div>
