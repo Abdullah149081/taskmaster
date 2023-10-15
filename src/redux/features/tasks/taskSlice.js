@@ -29,7 +29,7 @@ export const taskSlice = createSlice({
     },
 
     removeTask: (state, { payload }) => {
-      state.task.filter((item) => item.id != payload);
+      state.task = state.task.filter((item) => item.id != payload);
     },
 
     updatedTask: (state, { payload }) => {

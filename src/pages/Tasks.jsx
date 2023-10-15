@@ -8,7 +8,10 @@ import TaskCard from "../components/tasks/TaskCard";
 const Tasks = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { task } = useSelector((state) => state?.taskSlice);
-  console.log(task);
+
+  const runningTask = task.filter((item) => item.status === "running");
+  const paddingTask = task.filter((item) => item.status === "pending");
+  const doneTask = task.filter((item) => item.status === "done");
 
   const togglerOpen = useCallback(() => {
     setIsOpen((value) => !value);
@@ -46,11 +49,11 @@ const Tasks = () => {
             <div className="sticky top-0 mb-3 flex justify-between rounded-md bg-[#D3DDF9] p-5">
               <h1>Up Next</h1>
               <p className="grid h-6 w-6 place-content-center rounded-md bg-primary text-white">
-                0
+                {paddingTask.length || 0}
               </p>
             </div>
             <div className="space-y-3">
-              {task.map((item) => (
+              {paddingTask.map((item) => (
                 <TaskCard key={item.id} task={item} />
               ))}
             </div>
@@ -59,11 +62,11 @@ const Tasks = () => {
             <div className="sticky top-0 mb-3 flex justify-between rounded-md bg-[#D3DDF9] p-5">
               <h1>In Progress</h1>
               <p className="grid h-6 w-6 place-content-center rounded-md bg-primary text-white">
-                0
+                {runningTask.length || 0}
               </p>
             </div>
             <div className="space-y-3">
-              {task.map((item) => (
+              {runningTask.map((item) => (
                 <TaskCard key={item.id} task={item} />
               ))}
             </div>
@@ -72,11 +75,11 @@ const Tasks = () => {
             <div className="sticky top-0 mb-3 flex justify-between rounded-md bg-[#D3DDF9] p-5">
               <h1>Up Next</h1>
               <p className="grid h-6 w-6 place-content-center rounded-md bg-primary text-white">
-                0
+                {doneTask.length || 0}
               </p>
             </div>
             <div className="space-y-3">
-              {task.map((item) => (
+              {doneTask.map((item) => (
                 <TaskCard key={item.id} task={item} />
               ))}
             </div>
