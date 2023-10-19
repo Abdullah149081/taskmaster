@@ -1,26 +1,26 @@
-import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { addTask } from "../../redux/features/tasks/taskSlice";
-import Modal from "../ui/Modal";
+import { useForm } from 'react-hook-form';
+import Modal from '../ui/Modal';
+import { useDispatch } from 'react-redux';
+import { addTask } from '../../redux/features/tasks/tasksSlice';
 
-const AddTaskModal = ({ isOpen, togglerOpen }) => {
+const AddTaskModal = ({ isOpen, setIsOpen }) => {
   const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
 
   const onCancel = () => {
     reset();
-    togglerOpen(false);
+    setIsOpen(false);
   };
 
   const onSubmit = (data) => {
     dispatch(addTask(data));
-    reset();
+    onCancel();
   };
 
   return (
-    <Modal isOpen={isOpen} togglerOpen={togglerOpen} title="Programming Hero">
+    <Modal isOpen={isOpen} setIsOpen={setIsOpen} title="Programming Hero">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-5 flex flex-col">
+        <div className="flex flex-col mb-5">
           <label htmlFor="title" className="mb-2">
             Title
           </label>
@@ -28,10 +28,10 @@ const AddTaskModal = ({ isOpen, togglerOpen }) => {
             className="w-full rounded-md"
             type="text"
             id="title"
-            {...register("title")}
+            {...register('title')}
           />
         </div>
-        <div className="mb-5 flex flex-col">
+        <div className="flex flex-col mb-5">
           <label htmlFor="title" className="mb-2">
             Description
           </label>
@@ -39,10 +39,10 @@ const AddTaskModal = ({ isOpen, togglerOpen }) => {
             className="w-full rounded-md"
             type="text"
             id="description"
-            {...register("description")}
+            {...register('description')}
           />
         </div>
-        <div className="mb-5 flex flex-col">
+        <div className="flex flex-col mb-5">
           <label htmlFor="title" className="mb-2">
             Deadline
           </label>
@@ -50,17 +50,17 @@ const AddTaskModal = ({ isOpen, togglerOpen }) => {
             className="w-full rounded-md"
             type="date"
             id="date"
-            {...register("date")}
+            {...register('date')}
           />
         </div>
-        <div className="mb-5 flex flex-col text">
+        <div className="flex flex-col mb-5">
           <label htmlFor="title" className="mb-2">
             Assign to
           </label>
           <select
             className="w-full rounded-md"
             id="assignedTo"
-            {...register("assignedTo")}
+            {...register('assignedTo')}
           >
             <option value="Mir Hussain">Mir Hussain</option>
             <option value="Mezba Abedin">Mezba Abedin</option>
@@ -77,14 +77,14 @@ const AddTaskModal = ({ isOpen, togglerOpen }) => {
             <option value="Masud Alam">Masud Alam</option>
           </select>
         </div>
-        <div className="mb-5 flex flex-col">
+        <div className="flex flex-col mb-5">
           <label htmlFor="title" className="mb-2">
             Priority
           </label>
           <select
             className="w-full rounded-md"
             id="priority"
-            {...register("priority")}
+            {...register('priority')}
           >
             <option defaultValue value="high">
               High
@@ -93,7 +93,7 @@ const AddTaskModal = ({ isOpen, togglerOpen }) => {
             <option value="low">Low</option>
           </select>
         </div>
-        <div className="flex justify-end gap-3">
+        <div className="flex gap-3 justify-end">
           <button
             onClick={() => onCancel()}
             type="button"
@@ -101,7 +101,7 @@ const AddTaskModal = ({ isOpen, togglerOpen }) => {
           >
             Cancel
           </button>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary ">
             submit
           </button>
         </div>

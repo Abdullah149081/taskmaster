@@ -1,18 +1,14 @@
-import { useSelector } from "react-redux";
-import Modal from "../ui/Modal";
+import { useSelector } from 'react-redux';
+import Modal from '../ui/Modal';
 
-const TaskDetailsModal = ({ isOpen, togglerOpen, taskId }) => {
-  const { task } = useSelector((state) => state.taskSlice);
+const TaskDetailsModal = ({ isOpen, setIsOpen, id }) => {
+  const { tasks } = useSelector((state) => state.tasksSlice);
 
-  const details = task.find((item) => item.id === taskId);
-  console.log(details, taskId);
+  const task = tasks.find((item) => item.id === id);
 
   return (
-    <Modal isOpen={isOpen} togglerOpen={togglerOpen}>
-      <div>
-        <h2>{details.title}</h2>
-        <p>{details.description}</p>
-      </div>
+    <Modal isOpen={isOpen} setIsOpen={setIsOpen} title={task?.title}>
+      {task?.description}
     </Modal>
   );
 };

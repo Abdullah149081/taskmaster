@@ -1,14 +1,14 @@
-import { Dialog, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import { Dialog, Transition } from '@headlessui/react';
+import { Fragment } from 'react';
 
-export default function Modal({ isOpen, togglerOpen, title, children }) {
+export default function Modal({ isOpen, setIsOpen, title, children }) {
   function closeModal() {
-    togglerOpen(false);
+    setIsOpen(false);
   }
 
   return (
     <>
-      <Transition appear show={isOpen} as={Fragment}>
+      <Transition appear show={isOpen} as={Fragment} className="z-[1000]">
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
@@ -40,7 +40,7 @@ export default function Modal({ isOpen, togglerOpen, title, children }) {
                   >
                     {title}
                   </Dialog.Title>
-                  <div className="mt-2">{children}</div>
+                  {children}
                 </Dialog.Panel>
               </Transition.Child>
             </div>
