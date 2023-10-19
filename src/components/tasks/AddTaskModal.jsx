@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { addTask } from "../../redux/features/tasks/taskSlice";
+
+import { addTask } from "../../redux/features/tasks/tasksSlice";
 import Modal from "../ui/Modal";
 
 const AddTaskModal = ({ isOpen, togglerOpen }) => {
@@ -53,7 +54,7 @@ const AddTaskModal = ({ isOpen, togglerOpen }) => {
             {...register("date")}
           />
         </div>
-        <div className="mb-5 flex flex-col text">
+        <div className="text mb-5 flex flex-col">
           <label htmlFor="title" className="mb-2">
             Assign to
           </label>

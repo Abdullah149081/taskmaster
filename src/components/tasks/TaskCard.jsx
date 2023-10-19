@@ -1,15 +1,19 @@
 import { ArrowRightIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useDispatch } from "react-redux";
-import { removeTask, updatedTask } from "../../redux/features/tasks/taskSlice";
+import {
+  removeTask,
+  updateStatus,
+  userTasks,
+} from "../../redux/features/tasks/tasksSlice";
 
-const TaskCard = ({ task }) => {
+const TaskCard = ({ tasks }) => {
   const dispatch = useDispatch();
 
   let updatedStatus;
 
-  if (task.status === "pending") {
+  if (tasks.status === "pending") {
     updatedStatus = "running";
-  } else if (task.status === "running") {
+  } else if (tasks.status === "running") {
     updatedStatus = "done";
   } else {
     updatedStatus = "archive";
@@ -19,24 +23,27 @@ const TaskCard = ({ task }) => {
     <div className="rounded-md bg-secondary/10 p-5">
       <h1
         className={`mb-3 text-lg font-semibold  ${
-          task?.priority === "high" ? "text-red-500" : ""
-        } ${task?.priority === "medium" ? "text-yellow-500" : ""} ${
-          task?.priority === "low" ? "text-green-500" : ""
+          tasks?.priority === "high" ? "text-red-500" : ""
+        } ${tasks?.priority === "medium" ? "text-yellow-500" : ""} ${
+          tasks?.priority === "low" ? "text-green-500" : ""
         }`}
       >
-        {task?.title}
+        {tasks?.title}
       </h1>
-      <p className="mb-3">{task?.description}</p>
-      <p className="text-sm">Assigned to - {task?.assignedTo}</p>
+      <p className="mb-3">{tasks?.description}</p>
+      <p className="text-sm">Assigned to - {tasks?.assignedTo}</p>
       <div className="mt-3 flex justify-between">
-        <p>{task?.date}</p>
+        <p>{tasks?.date}</p>
         <div className="flex gap-3">
-          <button onClick={() => dispatch(removeTask(task?.id))} title="Delete">
+          <button
+            onClick={() => dispatch(removeTask(tasks?.id))}
+            title="Delete"
+          >
             <TrashIcon className="h-5 w-5 text-red-500" />
           </button>
           <button
             onClick={() =>
-              dispatch(updatedTask({ id: task.id, status: updatedStatus }))
+              dispatch(updateStatus({ id: tasks.id, status: updatedStatus }))
             }
             title="In progress"
           >

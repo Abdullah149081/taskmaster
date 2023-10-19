@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react';
-import loginImage from '../assets/image/login.svg';
-import { useForm, useWatch } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import loginImage from "../assets/image/login.svg";
+import { useForm, useWatch } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const { handleSubmit, register, control } = useForm();
-  const password = useWatch({ control, name: 'password' });
-  const confirmPassword = useWatch({ control, name: 'confirmPassword' });
+  const password = useWatch({ control, name: "password" });
+  const confirmPassword = useWatch({ control, name: "confirmPassword" });
   const navigate = useNavigate();
   const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
     if (
       password !== undefined &&
-      password !== '' &&
+      password !== "" &&
       confirmPassword !== undefined &&
-      confirmPassword !== '' &&
+      confirmPassword !== "" &&
       password === confirmPassword
     ) {
       setDisabled(false);
@@ -34,21 +34,21 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex max-w-7xl mx-auto h-screen items-center">
+    <div className="mx-auto flex h-screen max-w-7xl items-center">
       <div className="w-1/2">
         <img src={loginImage} className="h-full w-full" alt="" />
       </div>
-      <div className="w-1/2  grid place-items-center">
-        <div className="bg-primary/5 w-full max-w-sm rounded-lg grid place-items-center p-10">
-          <h1 className="mb-10 font-medium text-2xl">Sign up</h1>
-          <form className="space-y-5 w-full" onSubmit={handleSubmit(onSubmit)}>
+      <div className="grid  w-1/2 place-items-center">
+        <div className="grid w-full max-w-sm place-items-center rounded-lg bg-primary/5 p-10">
+          <h1 className="mb-10 text-2xl font-medium">Sign up</h1>
+          <form className="w-full space-y-5" onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col items-start">
               <label htmlFor="email">Name</label>
               <input
                 type="text"
                 id="name"
                 className="w-full rounded-md"
-                {...register('name')}
+                {...register("name")}
               />
             </div>
             <div className="flex flex-col items-start">
@@ -57,7 +57,7 @@ const Signup = () => {
                 type="email"
                 id="email"
                 className="w-full rounded-md"
-                {...register('email')}
+                {...register("email")}
               />
             </div>
             <div className="flex flex-col items-start">
@@ -66,7 +66,7 @@ const Signup = () => {
                 type="password"
                 id="password"
                 className="w-full rounded-md"
-                {...register('password')}
+                {...register("password")}
               />
             </div>
             <div className="flex flex-col items-start">
@@ -75,13 +75,13 @@ const Signup = () => {
                 type="password"
                 id="confirm-password"
                 className="w-full rounded-md"
-                {...register('confirmPassword')}
+                {...register("confirmPassword")}
               />
             </div>
             <div className="!mt-8 ">
               <button
                 type="submit"
-                className="btn btn-primary w-full disabled:bg-gray-300 disabled:cursor-not-allowed"
+                className="btn btn-primary w-full disabled:cursor-not-allowed disabled:bg-gray-300"
                 disabled={disabled}
               >
                 Sign up
@@ -89,10 +89,10 @@ const Signup = () => {
             </div>
             <div>
               <p>
-                Already have an account?{' '}
+                Already have an account?{" "}
                 <span
-                  className="text-primary hover:underline cursor-pointer"
-                  onClick={() => navigate('/login')}
+                  className="cursor-pointer text-primary hover:underline"
+                  onClick={() => navigate("/login")}
                 >
                   Login
                 </span>

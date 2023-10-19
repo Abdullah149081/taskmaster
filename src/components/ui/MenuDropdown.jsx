@@ -1,9 +1,9 @@
-import { Menu, Transition } from '@headlessui/react';
-import { Fragment } from 'react';
+import { Menu, Transition } from "@headlessui/react";
+import { Fragment } from "react";
 
 export default function MenuDropdown({ children }) {
   return (
-    <Menu as="div" className="relative inline-block text-left bg-white z-[999]">
+    <Menu as="div" className="relative z-[999] inline-block bg-white text-left">
       <div>
         <Menu.Button>{children}</Menu.Button>
       </div>
@@ -22,7 +22,7 @@ export default function MenuDropdown({ children }) {
               {({ active }) => (
                 <button
                   className={`${
-                    active ? 'bg-primary text-white' : 'text-gray-900'
+                    active ? "bg-primary text-white" : "text-gray-900"
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
                   Profile
@@ -33,7 +33,7 @@ export default function MenuDropdown({ children }) {
               {({ active }) => (
                 <button
                   className={`${
-                    active ? 'bg-primary text-white' : 'text-gray-900'
+                    active ? "bg-primary text-white" : "text-gray-900"
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
                   Settings
@@ -44,7 +44,7 @@ export default function MenuDropdown({ children }) {
               {({ active }) => (
                 <button
                   className={`${
-                    active ? 'bg-primary text-white' : 'text-gray-900'
+                    active ? "bg-primary text-white" : "text-gray-900"
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
                   Logout

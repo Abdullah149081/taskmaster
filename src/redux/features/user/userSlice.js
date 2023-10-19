@@ -1,12 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  name: 'Mir Hussain',
-  email: 'mir@gmail.com',
+  name: "Mir Hussain",
+  email: "mir@gmail.com",
 };
 
 const userSlice = createSlice({
-  name: 'userSlice',
+  name: "userSlice",
   initialState,
   reducers: {},
 });
