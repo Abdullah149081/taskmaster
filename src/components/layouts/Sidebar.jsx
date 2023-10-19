@@ -3,32 +3,43 @@ import {
   Cog6ToothIcon,
   ChatBubbleOvalLeftEllipsisIcon,
   UserCircleIcon,
-} from "@heroicons/react/24/solid";
+  ArchiveBoxIcon,
+} from '@heroicons/react/24/solid';
 
-import logo from "../../assets/image/logo.png";
-import { NavLink } from "react-router-dom";
+import logo from '../../assets/image/logo.png';
+import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
-    <div className="sticky top-0 h-screen border-r-2 border-secondary/20">
-      <div className="flex h-full flex-col items-center gap-5 py-5">
+    <div className="h-screen sticky top-0 border-r-2 border-secondary/20">
+      <div className="flex flex-col items-center gap-5 h-full py-5">
         <img src={logo} alt="logo" />
         <NavLink
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "cursor-pointer rounded-2xl bg-primary p-2 text-white"
-              : "group cursor-pointer rounded-2xl p-2 text-secondary/40 transition-all hover:bg-primary"
+              ? 'p-2 rounded-2xl bg-primary text-white cursor-pointer'
+              : 'p-2 rounded-2xl group hover:bg-primary text-secondary/40 cursor-pointer transition-all'
           }
         >
           <SquaresPlusIcon className="h-7 w-7 group-hover:text-white" />
         </NavLink>
         <NavLink
+          to="/archive"
+          className={({ isActive }) =>
+            isActive
+              ? 'p-2 rounded-2xl bg-primary text-white cursor-pointer'
+              : 'p-2 rounded-2xl group hover:bg-primary text-secondary/40 cursor-pointer transition-all'
+          }
+        >
+          <ArchiveBoxIcon className="h-7 w-7 group-hover:text-white" />
+        </NavLink>
+        <NavLink
           to="/chat"
           className={({ isActive }) =>
             isActive
-              ? "cursor-pointer rounded-2xl bg-primary p-2 text-white"
-              : "group cursor-pointer rounded-2xl p-2 text-secondary/40 transition-all hover:bg-primary"
+              ? 'p-2 rounded-2xl bg-primary text-white cursor-pointer'
+              : 'p-2 rounded-2xl group hover:bg-primary text-secondary/40 cursor-pointer transition-all'
           }
         >
           <ChatBubbleOvalLeftEllipsisIcon className="h-7 w-7 group-hover:text-white " />
@@ -37,8 +48,8 @@ const Sidebar = () => {
           to="/settings"
           className={({ isActive }) =>
             isActive
-              ? "cursor-pointer rounded-2xl bg-primary p-2 text-white"
-              : "group cursor-pointer rounded-2xl p-2 text-secondary/40 transition-all hover:bg-primary"
+              ? 'p-2 rounded-2xl bg-primary text-white cursor-pointer'
+              : 'p-2 rounded-2xl group hover:bg-primary text-secondary/40 cursor-pointer transition-all'
           }
         >
           <Cog6ToothIcon className="h-7 w-7 group-hover:text-white " />
@@ -47,8 +58,8 @@ const Sidebar = () => {
           to="/profile"
           className={({ isActive }) =>
             isActive
-              ? "mt-auto cursor-pointer rounded-2xl bg-primary p-2 text-white"
-              : "group mt-auto cursor-pointer rounded-2xl p-2 text-secondary/40 transition-all  hover:bg-primary"
+              ? 'p-2 rounded-2xl bg-primary text-white cursor-pointer mt-auto'
+              : 'p-2 rounded-2xl group hover:bg-primary text-secondary/40 cursor-pointer transition-all  mt-auto'
           }
         >
           <UserCircleIcon className="h-7 w-7 group-hover:text-white " />
