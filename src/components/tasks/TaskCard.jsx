@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import {
   removeTask,
   updateStatus,
-  userTasks,
 } from "../../redux/features/tasks/tasksSlice";
 
 const TaskCard = ({ tasks }) => {
@@ -11,9 +10,9 @@ const TaskCard = ({ tasks }) => {
 
   let updatedStatus;
 
-  if (tasks.status === "pending") {
+  if (tasks?.status === "pending") {
     updatedStatus = "running";
-  } else if (tasks.status === "running") {
+  } else if (tasks?.status === "running") {
     updatedStatus = "done";
   } else {
     updatedStatus = "archive";
